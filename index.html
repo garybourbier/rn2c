@@ -10,23 +10,32 @@ body{background:#000;color:#33ff33;font-family:'Courier New',monospace;min-heigh
 canvas{position:fixed;top:0;left:0;z-index:0;opacity:.3;pointer-events:none}
 .page{position:relative;z-index:1;max-width:700px;margin:0 auto;padding:36px 18px 60px}
 
-/* HEADER */
 .title{text-align:center;margin-bottom:32px}
 .title h1{font-size:3rem;letter-spacing:.35em;text-shadow:0 0 24px #33ff3377}
 .title p{color:#1a7a1a;font-size:.7rem;letter-spacing:.15em;margin-top:6px}
 
-/* INTRO */
 .intro{border:1px solid #0d5c0d;background:#000a00;padding:16px 20px;margin-bottom:28px;font-size:.82rem;color:#33cc33;line-height:1.8}
 .intro strong{color:#33ff33}
+
+/* BOUTONS OUVRIR DIRECT */
+.open-direct{background:#000a00;border:1px solid #33ff33;padding:20px 22px;margin-bottom:28px}
+.open-direct .od-title{font-size:.65rem;color:#1a7a1a;letter-spacing:.15em;margin-bottom:14px}
+.od-buttons{display:flex;gap:12px;flex-wrap:wrap}
+.od-btn{flex:1;min-width:160px;padding:14px 12px;border:1px solid #33ff33;color:#33ff33;
+         text-decoration:none;text-align:center;background:#000;transition:all .2s;cursor:pointer}
+.od-btn:hover{background:#001a00;box-shadow:0 0 16px #33ff3344}
+.od-btn .b-name{font-size:.9rem;font-weight:bold;letter-spacing:.1em}
+.od-btn .b-sub{font-size:.62rem;color:#1a7a1a;display:block;margin-top:5px}
+.od-btn.secondary{border-color:#1a7a1a;color:#1a7a1a}
+.od-btn.secondary:hover{border-color:#33ff33;color:#33ff33}
+.od-note{font-size:.65rem;color:#0d5c0d;margin-top:12px}
 
 /* TABS */
 .tabs{display:flex;gap:0;margin-bottom:2px}
 .tab{flex:1;padding:11px 8px;text-align:center;cursor:pointer;border:1px solid #0d5c0d;
       font-size:.72rem;letter-spacing:.1em;color:#1a7a1a;background:#000;transition:all .2s}
-.tab.active{background:#001a00;color:#33ff33;border-color:#33ff33}
-.tab:hover{color:#33ff33;border-color:#1a7a1a}
+.tab.active,.tab:hover{background:#001a00;color:#33ff33;border-color:#33ff33}
 
-/* PANELS */
 .panel{display:none;border:1px solid #0d5c0d;padding:22px;background:#000a00}
 .panel.active{display:block}
 
@@ -36,35 +45,33 @@ canvas{position:fixed;top:0;left:0;z-index:0;opacity:.3;pointer-events:none}
 .app-card{border:1px solid #1a7a1a;padding:14px;background:#000}
 .app-card .app-name{font-size:.85rem;color:#33ff33;margin-bottom:4px;letter-spacing:.08em}
 .app-card .app-desc{font-size:.68rem;color:#1a7a1a;margin-bottom:10px;line-height:1.5}
-.dl-btn{display:block;padding:9px 12px;border:1px solid #33ff33;color:#33ff33;
-         text-decoration:none;font-size:.7rem;letter-spacing:.08em;text-align:center;
-         background:#000;transition:all .2s;margin-bottom:6px}
-.dl-btn:hover{background:#001a00;box-shadow:0 0 10px #33ff3333}
+.dl-btn{display:block;padding:9px 12px;border:1px solid #33ff33;color:#33ff33;text-decoration:none;
+         font-size:.7rem;letter-spacing:.08em;text-align:center;background:#000;
+         transition:all .2s;margin-bottom:6px}
+.dl-btn:hover{background:#001a00}
 .dl-btn.secondary{border-color:#1a7a1a;color:#1a7a1a}
 .dl-btn.secondary:hover{color:#33ff33;border-color:#33ff33}
-
 .note{font-size:.68rem;color:#0d5c0d;margin-top:10px;line-height:1.6;padding-top:10px;border-top:1px solid #0a2a0a}
 
-/* QR */
-.divider{border:none;border-top:1px solid #0a2a0a;margin:28px 0}
-.qr-block{text-align:center}
-.qr-block img{width:220px;height:220px;image-rendering:pixelated;border:1px solid #1a7a1a}
-.qr-label{font-size:.65rem;color:#1a7a1a;letter-spacing:.15em;margin-top:10px}
-.onion-addr{font-size:.6rem;color:#0d5c0d;word-break:break-all;margin-top:5px;padding:0 20px}
-
-.footer{text-align:center;margin-top:44px;color:#0a3d0a;font-size:.58rem;letter-spacing:.1em}
-
-/* auto-detect highlight */
+/* DISTRO LINUX */
 .distro-tabs{display:flex;flex-wrap:wrap;gap:4px;margin:14px 0 0}
-.dtab{padding:6px 10px;font-size:.65rem;letter-spacing:.08em;cursor:pointer;
-      border:1px solid #0a2a0a;color:#1a7a1a;background:#000;transition:all .2s}
+.dtab{padding:6px 10px;font-size:.65rem;letter-spacing:.08em;cursor:pointer;border:1px solid #0a2a0a;color:#1a7a1a;background:#000;transition:all .2s}
 .dtab.active{border-color:#33ff33;color:#33ff33;background:#001000}
 .dtab:hover{color:#33ff33;border-color:#1a7a1a}
 .dpanel{display:none;margin-top:0}
 .dpanel.active{display:block}
 .code-block{background:#000500;border:1px solid #0a2a0a;padding:14px;margin-top:10px}
-.code-block pre{font-size:.65rem;color:#33cc33;white-space:pre-wrap;word-break:break-all;line-height:1.7}
+.code-block pre{font-size:.62rem;color:#33cc33;white-space:pre-wrap;word-break:break-all;line-height:1.7}
 .code-label{font-size:.62rem;color:#1a7a1a;margin-bottom:4px;letter-spacing:.08em}
+
+/* QR */
+.divider{border:none;border-top:1px solid #0a2a0a;margin:28px 0}
+.qr-block{text-align:center}
+.qr-block img{width:200px;height:200px;image-rendering:pixelated;border:1px solid #1a7a1a}
+.qr-label{font-size:.65rem;color:#1a7a1a;letter-spacing:.15em;margin-top:10px}
+.onion-addr{font-size:.58rem;color:#0d5c0d;word-break:break-all;margin-top:5px;padding:0 20px}
+
+.footer{text-align:center;margin-top:44px;color:#0a3d0a;font-size:.58rem;letter-spacing:.1em}
 .detected-label{font-size:.6rem;color:#1a7a1a;text-align:right;margin-bottom:6px;letter-spacing:.08em}
 </style>
 </head>
@@ -80,8 +87,25 @@ canvas{position:fixed;top:0;left:0;z-index:0;opacity:.3;pointer-events:none}
   <div class="intro">
     <strong>RN2C</strong> est une radio live et un espace de discussion vocal chiffré,
     hébergé sur le réseau Tor. <strong>Pas de compte</strong>, pas de logs, pas de censure possible.<br>
-    Pour y accéder, ton navigateur doit supporter les adresses <strong>.onion</strong>.
-    Choisis ton appareil ci-dessous.
+    Accès via adresse <strong>.onion</strong> — nécessite Tor Browser ou Brave.
+  </div>
+
+  <!-- BOUTONS OUVERTURE DIRECTE (Android prioritaire, desktop aussi) -->
+  <div class="open-direct" id="open-direct-block">
+    <div class="od-title">&gt; OUVRIR RN2C DIRECTEMENT _</div>
+    <div class="od-buttons">
+      <a class="od-btn" id="btn-tor" href="intent://e4a5qysp4kwollmwjnoanmk4qbvuowts4awaqjeeylocjc62i5wa2tyd.onion/#Intent;scheme=https;package=org.torproject.torbrowser;S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dorg.torproject.torbrowser;end">
+        <div class="b-name">TOR BROWSER</div>
+        <span class="b-sub">Ouvre RN2C dans Tor Browser</span>
+      </a>
+      <a class="od-btn secondary" id="btn-brave" href="intent://e4a5qysp4kwollmwjnoanmk4qbvuowts4awaqjeeylocjc62i5wa2tyd.onion/#Intent;scheme=https;package=com.brave.browser;S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.brave.browser;end">
+        <div class="b-name">BRAVE</div>
+        <span class="b-sub">Ouvre RN2C dans Brave (micro OK)</span>
+      </a>
+    </div>
+    <div class="od-note" id="od-note">
+      &gt; Si l'app n'est pas installée, tu seras redirigé vers le store pour la télécharger.
+    </div>
   </div>
 
   <div class="detected-label" id="detect-label"></div>
@@ -94,187 +118,148 @@ canvas{position:fixed;top:0;left:0;z-index:0;opacity:.3;pointer-events:none}
     <div class="tab" id="tab-linux"   onclick="show('linux')">LINUX</div>
   </div>
 
-  <!-- ANDROID -->
   <div class="panel" id="panel-android">
     <div class="dl-grid">
       <div class="app-card">
         <div class="app-name">TOR BROWSER</div>
-        <div class="app-desc">Navigateur officiel Tor Project.<br>Accès .onion natif, anonymat total.</div>
+        <div class="app-desc">Navigateur officiel Tor Project. Accès .onion natif, anonymat total.</div>
         <a class="dl-btn" href="https://play.google.com/store/apps/details?id=org.torproject.torbrowser" target="_blank" rel="noopener">Google Play</a>
         <a class="dl-btn secondary" href="https://www.torproject.org/download/#android" target="_blank" rel="noopener">APK direct</a>
       </div>
       <div class="app-card">
         <div class="app-name">BRAVE</div>
-        <div class="app-desc">Active <em>Nouvel onglet privé Tor</em> dans le menu.<br>Micro fonctionnel pour le vocal.</div>
+        <div class="app-desc">Active <em>Nouvel onglet privé Tor</em> dans le menu. Micro fonctionnel pour le vocal.</div>
         <a class="dl-btn" href="https://play.google.com/store/apps/details?id=com.brave.browser" target="_blank" rel="noopener">Google Play</a>
       </div>
     </div>
-    <div class="note">Sur Tor Browser Android, le micro est bloqué par défaut. Utilise <strong>Brave + Tor</strong> pour le chat vocal RN2C.</div>
+    <div class="note">Utilise <strong>Brave + Tor</strong> pour le chat vocal — Tor Browser bloque le micro par défaut.</div>
   </div>
 
-  <!-- iOS -->
   <div class="panel" id="panel-ios">
     <div class="dl-grid">
       <div class="app-card">
         <div class="app-name">ONION BROWSER</div>
-        <div class="app-desc">App Tor officielle pour iPhone/iPad.<br>Accès .onion, open source.</div>
+        <div class="app-desc">App Tor officielle pour iPhone/iPad. Accès .onion, open source.</div>
         <a class="dl-btn" href="https://apps.apple.com/app/onion-browser/id519296448" target="_blank" rel="noopener">App Store</a>
       </div>
       <div class="app-card">
         <div class="app-name">BRAVE</div>
-        <div class="app-desc">Fenêtre privée avec Tor intégré.<br>Plus fluide qu'Onion Browser.</div>
+        <div class="app-desc">Fenêtre privée Tor intégrée. Plus fluide qu'Onion Browser.</div>
         <a class="dl-btn" href="https://apps.apple.com/app/brave-private-browser/id1052879175" target="_blank" rel="noopener">App Store</a>
       </div>
     </div>
-    <div class="note">Sur iOS, Apple impose des restrictions sur WebRTC — le micro peut ne pas fonctionner pour le vocal.</div>
+    <div class="note">Sur iOS, Apple impose des restrictions WebRTC — le micro peut ne pas fonctionner pour le vocal.</div>
   </div>
 
-  <!-- WINDOWS -->
   <div class="panel" id="panel-windows">
     <div class="dl-grid">
       <div class="app-card">
         <div class="app-name">TOR BROWSER</div>
-        <div class="app-desc">Version officielle Windows 64-bit.<br>Installation en 2 clics, pas d'admin requis.</div>
+        <div class="app-desc">Version officielle Windows 64-bit. Installation en 2 clics, pas d'admin requis.</div>
         <a class="dl-btn" href="https://www.torproject.org/download/" target="_blank" rel="noopener">torproject.org</a>
       </div>
       <div class="app-card">
         <div class="app-name">BRAVE</div>
-        <div class="app-desc">Installe, puis <em>Fichier → Nouvelle fenêtre privée avec Tor</em>.<br>Micro OK pour le vocal.</div>
+        <div class="app-desc">Fichier → Nouvelle fenêtre privée avec Tor. Micro OK pour le vocal.</div>
         <a class="dl-btn" href="https://brave.com/download/" target="_blank" rel="noopener">brave.com</a>
       </div>
     </div>
-    <div class="note">Pour le chat vocal RN2C, préfère <strong>Brave + Tor</strong> — Tor Browser bloque le micro par défaut.</div>
+    <div class="note">Pour le chat vocal RN2C, préfère <strong>Brave + Tor</strong>.</div>
   </div>
 
-  <!-- MAC -->
   <div class="panel" id="panel-mac">
     <div class="dl-grid">
       <div class="app-card">
         <div class="app-name">TOR BROWSER</div>
-        <div class="app-desc">DMG universel Apple Silicon + Intel.<br>Drag & Drop dans Applications.</div>
+        <div class="app-desc">DMG universel Apple Silicon + Intel. Drag & Drop dans Applications.</div>
         <a class="dl-btn" href="https://www.torproject.org/download/" target="_blank" rel="noopener">torproject.org</a>
       </div>
       <div class="app-card">
         <div class="app-name">BRAVE</div>
-        <div class="app-desc">DMG macOS. Fenêtre privée Tor dans le menu Fichier.<br>Micro fonctionnel.</div>
+        <div class="app-desc">DMG macOS. Fenêtre privée Tor dans le menu Fichier. Micro fonctionnel.</div>
         <a class="dl-btn" href="https://brave.com/download/" target="_blank" rel="noopener">brave.com</a>
       </div>
     </div>
-    <div class="note">Sur Mac, Gatekeeper peut bloquer l'ouverture → clic droit → Ouvrir pour contourner.</div>
+    <div class="note">Gatekeeper peut bloquer l'ouverture → clic droit → Ouvrir pour contourner.</div>
   </div>
 
-  <!-- LINUX -->
   <div class="panel" id="panel-linux">
     <div class="dl-grid">
       <div class="app-card">
         <div class="app-name">TOR BROWSER</div>
         <div class="app-desc">Archive tar.xz universelle — fonctionne sur toutes les distros.</div>
         <a class="dl-btn" href="https://www.torproject.org/download/" target="_blank" rel="noopener">torproject.org — tar.xz</a>
-        <a class="dl-btn secondary" href="https://tb-manual.torproject.org/installation/" target="_blank" rel="noopener">Guide installation</a>
       </div>
       <div class="app-card">
         <div class="app-name">BRAVE</div>
-        <div class="app-desc">Dépôt officiel disponible pour apt, dnf, pacman, zypper.</div>
+        <div class="app-desc">Dépôt officiel apt/dnf/pacman/zypper disponible.</div>
         <a class="dl-btn" href="https://brave.com/linux/" target="_blank" rel="noopener">brave.com/linux</a>
       </div>
     </div>
-
     <div class="distro-tabs">
-      <div class="dtab active" onclick="showdistro('ubuntu')">Ubuntu / Debian</div>
-      <div class="dtab" onclick="showdistro('fedora')">Fedora / RHEL</div>
-      <div class="dtab" onclick="showdistro('arch')">Arch / Manjaro</div>
-      <div class="dtab" onclick="showdistro('suse')">openSUSE</div>
-      <div class="dtab" onclick="showdistro('flatpak')">Flatpak</div>
-      <div class="dtab" onclick="showdistro('generic')">Générique</div>
+      <div class="dtab active" onclick="showdistro('ubuntu',this)">Ubuntu/Debian</div>
+      <div class="dtab" onclick="showdistro('fedora',this)">Fedora/RHEL</div>
+      <div class="dtab" onclick="showdistro('arch',this)">Arch/Manjaro</div>
+      <div class="dtab" onclick="showdistro('suse',this)">openSUSE</div>
+      <div class="dtab" onclick="showdistro('flatpak',this)">Flatpak</div>
+      <div class="dtab" onclick="showdistro('generic',this)">Générique</div>
     </div>
-
     <div class="dpanel active" id="dpanel-ubuntu">
       <div class="code-block">
-        <div class="code-label"># Tor Browser — via dépôt Tor Project</div>
-        <pre>sudo apt install -y apt-transport-https gpg
-wget -qO- https://deb.torproject.org/torproject.org/A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89.asc | gpg --dearmor | sudo tee /usr/share/keyrings/tor-archive-keyring.gpg &gt;/dev/null
-echo "deb [arch=amd64 signed-by=/usr/share/keyrings/tor-archive-keyring.gpg] https://deb.torproject.org/torproject.org $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/tor.list
-sudo apt update && sudo apt install -y tor torbrowser-launcher
-torbrowser-launcher</pre>
-        <div class="code-label" style="margin-top:14px"># Brave</div>
-        <pre>sudo apt install -y curl
-sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
-echo "deb [arch=amd64 signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser.list
+        <div class="code-label"># Tor Browser</div>
+        <pre>sudo apt install -y torbrowser-launcher && torbrowser-launcher</pre>
+        <div class="code-label" style="margin-top:10px"># Brave</div>
+        <pre>sudo curl -fsSLo /usr/share/keyrings/brave.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/brave.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave.list
 sudo apt update && sudo apt install -y brave-browser</pre>
       </div>
     </div>
-
     <div class="dpanel" id="dpanel-fedora">
       <div class="code-block">
-        <div class="code-label"># Tor Browser — via torbrowser-launcher</div>
-        <pre>sudo dnf install -y torbrowser-launcher
-torbrowser-launcher</pre>
-        <div class="code-label" style="margin-top:14px"># Brave</div>
-        <pre>sudo dnf install -y dnf-plugins-core
-sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
+        <div class="code-label"># Tor Browser</div>
+        <pre>sudo dnf install -y torbrowser-launcher && torbrowser-launcher</pre>
+        <div class="code-label" style="margin-top:10px"># Brave</div>
+        <pre>sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
 sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
 sudo dnf install -y brave-browser</pre>
       </div>
     </div>
-
     <div class="dpanel" id="dpanel-arch">
       <div class="code-block">
-        <div class="code-label"># Tor Browser — AUR (via yay ou paru)</div>
-        <pre>yay -S tor-browser
-# ou
-paru -S tor-browser</pre>
-        <div class="code-label" style="margin-top:14px"># Brave — dépôt officiel</div>
-        <pre>yay -S brave-bin
-# ou via pacman (dépôt extra)
-sudo pacman -S brave-browser</pre>
+        <div class="code-label"># Tor Browser + Brave via AUR</div>
+        <pre>yay -S tor-browser brave-bin</pre>
       </div>
     </div>
-
     <div class="dpanel" id="dpanel-suse">
       <div class="code-block">
         <div class="code-label"># Tor Browser</div>
-        <pre>sudo zypper install torbrowser-launcher
-torbrowser-launcher</pre>
-        <div class="code-label" style="margin-top:14px"># Brave</div>
+        <pre>sudo zypper install torbrowser-launcher && torbrowser-launcher</pre>
+        <div class="code-label" style="margin-top:10px"># Brave</div>
         <pre>sudo zypper ar https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
-sudo zypper ref
-sudo zypper in brave-browser</pre>
+sudo zypper ref && sudo zypper in brave-browser</pre>
       </div>
     </div>
-
     <div class="dpanel" id="dpanel-flatpak">
       <div class="code-block">
-        <div class="code-label"># Tor Browser via Flathub</div>
         <pre>flatpak install flathub com.github.micahflee.torbrowser-launcher
-flatpak run com.github.micahflee.torbrowser-launcher</pre>
-        <div class="code-label" style="margin-top:14px"># Brave via Flathub</div>
-        <pre>flatpak install flathub com.brave.Browser
-flatpak run com.brave.Browser</pre>
+flatpak install flathub com.brave.Browser</pre>
       </div>
     </div>
-
     <div class="dpanel" id="dpanel-generic">
       <div class="code-block">
-        <div class="code-label"># Tor Browser — tar.xz (toutes distros)</div>
-        <pre># Télécharge sur torproject.org
-tar -xf tor-browser-linux64-*.tar.xz
-cd tor-browser/
-./start-tor-browser.desktop</pre>
-        <div class="code-label" style="margin-top:14px"># Brave — AppImage</div>
-        <pre># Via brave.com/linux/ → AppImage
-chmod +x brave-browser-*.AppImage
-./brave-browser-*.AppImage</pre>
+        <div class="code-label"># Tor Browser — tar.xz</div>
+        <pre>tar -xf tor-browser-linux64-*.tar.xz && cd tor-browser && ./start-tor-browser.desktop</pre>
+        <div class="code-label" style="margin-top:10px"># Brave — AppImage</div>
+        <pre>chmod +x brave-browser-*.AppImage && ./brave-browser-*.AppImage</pre>
       </div>
     </div>
-
-    <div class="note">Pour le chat vocal RN2C, préfère <strong>Brave + Tor</strong> — Tor Browser bloque le micro par défaut.</div>
+    <div class="note">Pour le chat vocal RN2C, préfère <strong>Brave + Tor</strong>.</div>
   </div>
 
   <hr class="divider">
-
   <div class="qr-block">
     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYgAAAGICAIAAADUIeBxAAAKeUlEQVR4nO3dQY4rNxYAQcvQjXz/I/hM44V3A3AADvjAZHfE8rdQKpX0E1w8kJ+//vPXHy/4+/P31utPfa7d9z1ldf/T97P73E7dz+7nnb7PU/dz6/s69dxu+fP2DQD8N2ECcoQJyBEmIEeYgBxhAnKECcj5rv5Qm9859fpbczen1OZ9VnbvszZ3c+p+Xpkbqv1/t2ICcoQJyBEmIEeYgBxhAnKECcgRJiBnOce0UtvnaHfeZPr+a9efvs9Tcz235ptuzaPd2l9s163/71ZMQI4wATnCBOQIE5AjTECOMAE5wgTkbM8xvWJ6X6Fb55rtvn76PLVdt+aDavN3p57zrX2UplkxATnCBOQIE5AjTECOMAE5wgTkCBOQ82PnmG7ti3Tq9afmj27tu7R7ndr+VrW5sJ86r7RixQTkCBOQI0xAjjABOcIE5AgTkCNMQM72HFNtnuL1c9Z2r3PrPL7pfYh2vX4u4cqtc+5Wbr2vFROQI0xAjjABOcIE5AgTkCNMQI4wATnLOabpeY1pt/ZReuX1p9Tmbjz/f02fYzjNignIESYgR5iAHGECcoQJyBEmIEeYgJxvbX+laa+f53VrXmZl+vnUzpubvv6t+6mxYgJyhAnIESYgR5iAHGECcoQJyBEmIGf7XLld0/M1tTmUlel9c145L++UU+fBTc/11PZ7OnUO467dz2XFBOQIE5AjTECOMAE5wgTkCBOQI0xAznd63md6DmLllXPEfuqc167p7+WUV86Pu/X/5RQrJiBHmIAcYQJyhAnIESYgR5iAHGECcpb7MdXmU3avv/LK51qpzSXV9mmq3c/0nNG0U/NNu/dvxQTkCBOQI0xAjjABOcIE5AgTkCNMQM72uXKn5hdq56ztvu/066f307n1vq/MedX2EdtV+72ZYwKeJ0xAjjABOcIE5AgTkCNMQI4wATnfV/Z52b3OtFtzWLvX2TU9R3Nqrqp2n6fcOj/ultX9WzEBOcIE5AgTkCNMQI4wATnCBOQIE5DzmZ4TmTY9bzK978wptfmXV/Z1qn2/t+baate3YgJyhAnIESYgR5iAHGECcoQJyBEmIGd5rtytc812r7/7+tp8ysr0XM/0uWm35ox2rzPt1O//9d/tLismIEeYgBxhAnKECcgRJiBHmIAcYQJylnNMtf1Zbs3jrLw+J1Wbbzp1nVvP4dY5dLumz+M7xYoJyBEmIEeYgBxhAnKECcgRJiBHmICcb22u4db8y+51Tnll/mXa9LzSKbVzDHe9ch6iFROQI0xAjjABOcIE5AgTkCNMQI4wATmf2lzGrXPEaufo7bq1L9Wu2rzb7vV33ZoPWpn+XKf+H1kxATnCBOQIE5AjTECOMAE5wgTkCBOQ81n94dac0a05i1fuZ9cr1781N+T7/f+uMz1XaMUE5AgTkCNMQI4wATnCBOQIE5AjTEDOcj+m2j5KtXmQ2j5Wp67zyvc+fZ1dtf25Vmq/qxUrJiBHmIAcYQJyhAnIESYgR5iAHGECcrb3Y1qp7X+069b5X7f209lVO2/u9Tmp2ue9tR/ZihUTkCNMQI4wATnCBOQIE5AjTECOMAE539qcUW3eZHrfolvXuWV6H5/p1++qnVe4Mj2HtcuKCcgRJiBHmIAcYQJyhAnIESYgR5iAnO1z5VZq8zIrtX1wTl3n9e/r1v1Pz+PU5gRPMccE/DrCBOQIE5AjTECOMAE5wgTkCBOQs5xjWrl1rtbKbzuHbqU2J7Uyff1T71ubF3vl+zr1ea2YgBxhAnKECcgRJiBHmIAcYQJyhAnI+b5+jtvu/ey+7+7rX98Xadf0c5iel/mp+yWtvPK7tWICcoQJyBEmIEeYgBxhAnKECcgRJiDne2ufmpXaPkcrtedzag5r10/9vqbnm27NSd36vnY/rxUTkCNMQI4wATnCBOQIE5AjTECOMAE5n9Uffts+NafmkqbP16td/5TaPNTr+0zdcur/kRUTkCNMQI4wATnCBOQIE5AjTECOMAE5n9q8xivzRKdM7+Mz/blu7UNU+1298jt8ZQ7OignIESYgR5iAHGECcoQJyBEmIEeYgJzlHFNN7Tyv6f10bl3/lNr8zsr0/NetuaFb+3yduo4VE5AjTECOMAE5wgTkCBOQI0xAjjABOcfmmF7Zj2bXK/scrdTmg3bVzu97ZT+p3ffdNb2PlRUTkCNMQI4wATnCBOQIE5AjTECOMAE5n9UfXt+fqDZn9Mq5ZivTz//WvkIrtd/PrlvzSqeuY8UE5AgTkCNMQI4wATnCBOQIE5AjTEDOco7plFfOvart13NK7Ry92n5bK9PzZafed1dtn6wVKyYgR5iAHGECcoQJyBEmIEeYgBxhAnK+r8wH7d7PKbV9c27tN1Sbr5n+3mvzaCuv7D+1y4oJyBEmIEeYgBxhAnKECcgRJiBHmICc7615jVP73byyD07tfVdq+0y9vm/XtOnnc+o57L7eignIESYgR5iAHGECcoQJyBEmIEeYgJzt/Zh2TZ/PNT238sr+R9NzXqdM3/+t73eltk/ZK3NbVkxAjjABOcIE5AgTkCNMQI4wATnCBOR8p9/g1rzSyq25kt3rTD+36bmVW9/79PPcfd9Tbp3fd+o6u8/ZignIESYgR5iAHGECcoQJyBEmIEeYgJxj58pNz63U9tk55dT5XLXz1G7NK02rnbt3ar+qW1b3b8UE5AgTkCNMQI4wATnCBOQIE5AjTEDOcj+m2r48p5y6n+n7PPV8anMrK7X7rJ2z9src1ilWTECOMAE5wgTkCBOQI0xAjjABOcIE5CznmG7NL0zvK7Tr1nlhtfmvXdP7Rq3Uns+tubxdt/bhWrFiAnKECcgRJiBHmIAcYQJyhAnIESYg57P6w6n5ndqcxe71V26ds3bqfXfV9p+qne+269bvdmX6d7X7vVgxATnCBOQIE5AjTECOMAE5wgTkCBOQ86nNuUzPp9ya1zh1/d33/W3zPrf2z5qe63n9+9r9XFZMQI4wATnCBOQIE5AjTECOMAE5wgTkLPdjesUrc1i7anMrr+x7VeP7+t/XMccEPEOYgBxhAnKECcgRJiBHmIAcYQJyvrX9XFZ25zJ25ymmz637qfv4TD+3XbfOH5z+nazsfo+vPB8rJiBHmIAcYQJyhAnIESYgR5iAHGECcr6rP9TmUE55ZX+f2nzQyiv388r5gK/8/qfn46yYgBxhAnKECcgRJiBHmIAcYQJyhAnIWc4xrdTOcVu5tc/Rqfs55ZX5ml3T9zO9v9X0/ke3ns+p61gxATnCBOQIE5AjTECOMAE5wgTkCBOQsz3HVDM9f/TK/j6v3+fu9X/b3Nnq/mvf1ylWTECOMAE5wgTkCBOQI0xAjjABOcIE5Dw/x3TKrfmR3eu/Mueyu0/Q9PPcdWrerebUvNup38nq362YgBxhAnKECcgRJiBHmIAcYQJyhAnI2Z5jemVeY2V6/mX6PLJd0/NTu6bng37q/k23Ptcpu/djxQTkCBOQI0xAjjABOcIE5AgTkCNMQM5yjunWuVq33Pq8t+aGps8Xm56XqZ37dsut+bJTVvdvxQTkCBOQI0xAjjABOcIE5AgTkCNMQM4/XfFYJ8IyTLcAAAAASUVORK5CYII=" alt="QR RN2C .onion">
-    <div class="qr-label">&gt; ADRESSE .ONION _</div>
+    <div class="qr-label">&gt; ADRESSE .ONION DIRECTE _</div>
     <div class="onion-addr">e4a5qysp4kwollmwjnoanmk4qbvuowts4awaqjeeylocjc62i5wa2tyd.onion</div>
   </div>
 
@@ -282,7 +267,6 @@ chmod +x brave-browser-*.AppImage
 </div>
 
 <script>
-// ── Matrix rain ──
 const canvas = document.getElementById('c');
 const ctx = canvas.getContext('2d');
 const CHARS = 'RN2Crn2c01アカサタナハマヤラ░▒';
@@ -292,7 +276,6 @@ resize(); window.addEventListener('resize',resize);
 function draw(){ctx.fillStyle='rgba(0,0,0,0.048)';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.font='13px monospace';for(let i=0;i<cols;i++){const ch=CHARS[Math.floor(Math.random()*CHARS.length)];ctx.fillStyle=Math.random()>.95?'#ccffcc':'#33ff33';ctx.fillText(ch,i*14,drops[i]*14);if(drops[i]*14>canvas.height&&Math.random()>.975)drops[i]=0;drops[i]++;}}
 setInterval(draw,45);
 
-// ── Tabs ──
 function show(id){
   document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
@@ -300,23 +283,34 @@ function show(id){
   document.getElementById('tab-'+id).classList.add('active');
 }
 
-// ── Auto-detect OS ──
+function showdistro(id,el){
+  document.querySelectorAll('.dpanel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.dtab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('dpanel-'+id).classList.add('active');
+  el.classList.add('active');
+}
+
+// Détection OS + adaptation des boutons intent
 const ua = navigator.userAgent.toLowerCase();
-let detected = 'windows';
-let label = 'Windows détecté';
-if(/android/.test(ua))     { detected='android'; label='Android détecté'; }
-else if(/iphone|ipad/.test(ua)) { detected='ios';  label='iOS détecté'; }
-else if(/mac/.test(ua))    { detected='mac';     label='macOS détecté'; }
-else if(/linux/.test(ua))  { detected='linux';   label='Linux détecté'; }
+const isAndroid = /android/.test(ua);
+const isIos = /iphone|ipad/.test(ua);
+let detected = 'windows', label = 'Windows détecté';
+if(isAndroid)      { detected='android'; label='Android détecté'; }
+else if(isIos)     { detected='ios';     label='iOS détecté'; }
+else if(/mac/.test(ua))   { detected='mac';     label='macOS détecté'; }
+else if(/linux/.test(ua)) { detected='linux';   label='Linux détecté'; }
 document.getElementById('detect-label').textContent = '> ' + label + ' _';
 show(detected);
 
-function showdistro(id){
-  document.querySelectorAll('.dpanel').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.dtab').forEach(t=>t.classList.remove('active'));
-  const p=document.getElementById('dpanel-'+id);
-  if(p) p.classList.add('active');
-  event.target.classList.add('active');
+// Sur iOS/desktop : les intent:// ne marchent pas, on remplace par les liens directs
+if(!isAndroid){
+  document.getElementById('btn-tor').href   = 'https://www.torproject.org/download/';
+  document.getElementById('btn-brave').href = 'https://brave.com/download/';
+  document.getElementById('od-note').textContent = '> Installe l'app puis reviens scanner le QR .onion ci-dessous.';
+  if(isIos){
+    document.getElementById('btn-tor').href   = 'https://apps.apple.com/app/onion-browser/id519296448';
+    document.getElementById('btn-brave').href = 'https://apps.apple.com/app/brave-private-browser/id1052879175';
+  }
 }
 </script>
 </body>
