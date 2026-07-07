@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RN2C — Radio libre sur Tor</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#000;color:#33ff33;font-family:'Courier New',monospace;min-height:100vh;overflow-x:hidden}
+
+  canvas{position:fixed;top:0;left:0;z-index:0;opacity:.35}
+
+  .page{position:relative;z-index:1;max-width:680px;margin:0 auto;padding:40px 20px 60px}
+
+  .title{text-align:center;margin-bottom:36px}
+  .title h1{font-size:3.2rem;letter-spacing:.3em;color:#33ff33;text-shadow:0 0 20px #33ff3388}
+  .title p{color:#1a7a1a;font-size:.75rem;letter-spacing:.15em;margin-top:6px}
+
+  .warn{border:1px solid #1a7a1a;padding:18px 22px;margin-bottom:28px;background:#000a00}
+  .warn .label{font-size:.65rem;color:#1a7a1a;letter-spacing:.2em;margin-bottom:8px}>
+  .warn p{font-size:.85rem;color:#33cc33;line-height:1.7}
+
+  .browsers{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:32px}
+  .btn{display:block;padding:16px 12px;border:1px solid #33ff33;text-decoration:none;
+        color:#33ff33;text-align:center;transition:all .2s;background:#000}
+  .btn:hover{background:#001a00;box-shadow:0 0 16px #33ff3344}
+  .btn .bname{font-size:1rem;font-weight:bold;letter-spacing:.1em}
+  .btn .bsub{font-size:.65rem;color:#1a7a1a;margin-top:5px;display:block}
+
+  .divider{border:none;border-top:1px solid #0a3d0a;margin:28px 0}
+
+  .qr-block{text-align:center;margin-bottom:28px}
+  .qr-block img{width:260px;height:260px;image-rendering:pixelated;border:1px solid #1a7a1a}
+  .qr-block .qr-label{font-size:.65rem;color:#1a7a1a;letter-spacing:.15em;margin-top:10px}
+  .onion-addr{font-size:.62rem;color:#0d5c0d;word-break:break-all;margin-top:6px}
+
+  .steps{counter-reset:step}
+  .step{display:flex;gap:14px;margin-bottom:18px;padding:14px 16px;border-left:2px solid #1a7a1a;background:#000a00}
+  .step-num{font-size:1.4rem;color:#1a7a1a;min-width:28px;padding-top:2px}
+  .step-txt .s-title{font-size:.85rem;color:#33ff33;margin-bottom:4px}
+  .step-txt .s-desc{font-size:.75rem;color:#1a7a1a;line-height:1.6}
+  .step-txt code{color:#33cc33;background:#001000;padding:1px 5px;font-size:.7rem}
+
+  .footer{text-align:center;margin-top:48px;color:#0a3d0a;font-size:.6rem;letter-spacing:.12em}
+  .footer span{color:#1a7a1a}
+</style>
+</head>
+<body>
+
+<canvas id="c"></canvas>
+
+<div class="page">
+
+  <div class="title">
+    <h1>RN2C</h1>
+    <p>RADIO &bull; TOR NETWORK &bull; NO LOGS &bull; NO TRACKING</p>
+  </div>
+
+  <div class="warn">
+    <div class="label">&gt; ATTENTION _</div>
+    <p>RN2C tourne exclusivement sur le réseau <strong>Tor</strong>.<br>
+    Ton navigateur habituel ne peut pas y accéder.<br>
+    Télécharge <strong>Tor Browser</strong> ou <strong>Brave</strong> avant de continuer.</p>
+  </div>
+
+  <div class="browsers">
+    <a class="btn" href="https://www.torproject.org/download/" target="_blank" rel="noopener">
+      <div class="bname">TOR BROWSER</div>
+      <span class="bsub">torproject.org<br>Windows / Mac / Linux / Android</span>
+    </a>
+    <a class="btn" href="https://brave.com/download/" target="_blank" rel="noopener">
+      <div class="bname">BRAVE</div>
+      <span class="bsub">brave.com<br>+ activer Fenêtre privée Tor</span>
+    </a>
+  </div>
+
+  <hr class="divider">
+
+  <div class="qr-block">
+    <img src="data:image/png;base64,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" alt="QR RN2C">
+    <div class="qr-label">&gt; SCANNE POUR REJOINDRE _</div>
+    <div class="onion-addr">e4a5qysp4kwollmwjnoanmk4qbvuowts4awaqjeeylocjc62i5wa2tyd.onion</div>
+  </div>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-txt">
+        <div class="s-title">Installe Tor Browser ou Brave</div>
+        <div class="s-desc">Télécharge via les liens ci-dessus. Brave : active <em>Fichier → Nouvelle fenêtre privée avec Tor</em>.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-txt">
+        <div class="s-title">Ouvre l'adresse .onion</div>
+        <div class="s-desc">Scanne le QR code ou colle l'adresse dans la barre :<br>
+        <code>e4a5qysp4kwollmwjnoanmk4qbvuowts4awaqjeeylocjc62i5wa2tyd.onion</code></div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-txt">
+        <div class="s-title">Écoute la radio &amp; connecte-toi au vocal</div>
+        <div class="s-desc">Le flux démarre automatiquement. Pour le vocal Mumble, utilise Brave (microphone requis). Connexion chiffrée de bout en bout.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    &gt; RN2C // <span>réseau anonyme</span> // zéro log // zéro tracking _
+  </div>
+
+</div>
+
+<script>
+/* matrix rain */
+const canvas = document.getElementById('c');
+const ctx    = canvas.getContext('2d');
+const CHARS  = 'RN2Crn2c01アカサタナハマヤラ░▒';
+let cols, drops;
+
+function resize() {
+  canvas.width  = window.innerWidth;
+  canvas.height = window.innerHeight;
+  cols  = Math.floor(canvas.width / 14);
+  drops = Array(cols).fill(1);
+}
+resize();
+window.addEventListener('resize', resize);
+
+function draw() {
+  ctx.fillStyle = 'rgba(0,0,0,0.045)';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.font = '13px monospace';
+  for (let i = 0; i < cols; i++) {
+    const ch = CHARS[Math.floor(Math.random() * CHARS.length)];
+    const x  = i * 14;
+    const y  = drops[i] * 14;
+    ctx.fillStyle = Math.random() > .95 ? '#ccffcc' : '#33ff33';
+    ctx.fillText(ch, x, y);
+    if (y > canvas.height && Math.random() > .975) drops[i] = 0;
+    drops[i]++;
+  }
+}
+setInterval(draw, 45);
+</script>
+</body>
+</html>
