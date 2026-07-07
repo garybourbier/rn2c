@@ -98,9 +98,9 @@ canvas{position:fixed;top:0;left:0;z-index:0;opacity:.3;pointer-events:none}
         <div class="b-name">TOR BROWSER</div>
         <span class="b-sub">Ouvre RN2C dans Tor Browser</span>
       </a>
-      <a class="od-btn secondary" id="btn-brave" href="intent://e4a5qysp4kwollmwjnoanmk4qbvuowts4awaqjeeylocjc62i5wa2tyd.onion/#Intent;scheme=https;package=com.brave.browser;S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.brave.browser;end">
-        <div class="b-name">BRAVE</div>
-        <span class="b-sub">Ouvre RN2C dans Brave (micro OK)</span>
+      <a class="od-btn secondary" id="btn-rn2c-app" href="#rn2c-app-soon" onclick="document.getElementById('rn2c-app-soon').scrollIntoView({behavior:'smooth'});return false;">
+        <div class="b-name">APP RN2C</div>
+        <span class="b-sub">Bientôt disponible — app native</span>
       </a>
     </div>
     <div class="od-note" id="od-note">
@@ -122,17 +122,17 @@ canvas{position:fixed;top:0;left:0;z-index:0;opacity:.3;pointer-events:none}
     <div class="dl-grid">
       <div class="app-card">
         <div class="app-name">TOR BROWSER</div>
-        <div class="app-desc">Navigateur officiel Tor Project. Accès .onion natif, anonymat total.</div>
+        <div class="app-desc">Navigateur officiel Tor Project. Accès .onion natif, anonymat total. Seule option pour Android.</div>
         <a class="dl-btn" href="https://play.google.com/store/apps/details?id=org.torproject.torbrowser" target="_blank" rel="noopener">Google Play</a>
         <a class="dl-btn secondary" href="https://www.torproject.org/download/#android" target="_blank" rel="noopener">APK direct</a>
       </div>
-      <div class="app-card">
-        <div class="app-name">BRAVE</div>
-        <div class="app-desc">Active <em>Nouvel onglet privé Tor</em> dans le menu. Micro fonctionnel pour le vocal.</div>
-        <a class="dl-btn" href="https://play.google.com/store/apps/details?id=com.brave.browser" target="_blank" rel="noopener">Google Play</a>
+      <div class="app-card" id="rn2c-app-soon" style="border-color:#0a3d0a;opacity:.7">
+        <div class="app-name" style="color:#1a7a1a">APP RN2C</div>
+        <div class="app-desc" style="color:#0d5c0d">Application native Android en développement — accès direct au réseau, micro intégré, pas de navigateur requis.</div>
+        <div style="border:1px dashed #0a3d0a;padding:8px;text-align:center;font-size:.65rem;color:#0a3d0a;letter-spacing:.1em">BIENTÔT //</div>
       </div>
     </div>
-    <div class="note">Utilise <strong>Brave + Tor</strong> pour le chat vocal — Tor Browser bloque le micro par défaut.</div>
+    <div class="note">⚠️ Brave Android n'a pas de mode Tor — utilise <strong>Tor Browser</strong> pour accéder au .onion.</div>
   </div>
 
   <div class="panel" id="panel-ios">
@@ -302,14 +302,20 @@ else if(/linux/.test(ua)) { detected='linux';   label='Linux détecté'; }
 document.getElementById('detect-label').textContent = '> ' + label + ' _';
 show(detected);
 
-// Sur iOS/desktop : les intent:// ne marchent pas, on remplace par les liens directs
+// Sur iOS/desktop : intent:// ne marche pas, on remplace par liens de téléchargement
+// Sur Android : le bouton APP RN2C scroll vers la section, pas d'intent Brave (pas de Tor sur Brave Android)
 if(!isAndroid){
-  document.getElementById('btn-tor').href   = 'https://www.torproject.org/download/';
-  document.getElementById('btn-brave').href = 'https://brave.com/download/';
-  document.getElementById('od-note').textContent = '> Installe l'app puis reviens scanner le QR .onion ci-dessous.';
+  document.getElementById('btn-tor').href = 'https://www.torproject.org/download/';
+  const btnApp = document.getElementById('btn-rn2c-app');
+  btnApp.removeAttribute('onclick');
+  btnApp.href = 'https://brave.com/download/';
+  btnApp.querySelector('.b-name').textContent = 'BRAVE';
+  btnApp.querySelector('.b-sub').textContent = 'Fenêtre privée Tor intégrée (desktop)';
+  document.getElementById('od-note').textContent = '> Installe l\'app puis reviens scanner le QR .onion ci-dessous.';
   if(isIos){
-    document.getElementById('btn-tor').href   = 'https://apps.apple.com/app/onion-browser/id519296448';
-    document.getElementById('btn-brave').href = 'https://apps.apple.com/app/brave-private-browser/id1052879175';
+    document.getElementById('btn-tor').href = 'https://apps.apple.com/app/onion-browser/id519296448';
+    btnApp.href = 'https://apps.apple.com/app/brave-private-browser/id1052879175';
+    btnApp.querySelector('.b-sub').textContent = 'Fenêtre privée Tor (iOS)';
   }
 }
 </script>
