@@ -98,9 +98,9 @@ canvas{position:fixed;top:0;left:0;z-index:0;opacity:.3;pointer-events:none}
         <div class="b-name">TOR BROWSER</div>
         <span class="b-sub">Ouvre RN2C dans Tor Browser</span>
       </a>
-      <a class="od-btn secondary" id="btn-rn2c-app" href="#rn2c-app-soon" onclick="document.getElementById('rn2c-app-soon').scrollIntoView({behavior:'smooth'});return false;">
+      <a class="od-btn" id="btn-rn2c-app" href="https://github.com/garybourbier/rn2c-app/releases/latest" target="_blank" rel="noopener">
         <div class="b-name">APP RN2C</div>
-        <span class="b-sub">Bientôt disponible — app native</span>
+        <span class="b-sub">Télécharger v0.1.0 — Tor embarqué</span>
       </a>
     </div>
     <div class="od-note" id="od-note">
@@ -126,10 +126,11 @@ canvas{position:fixed;top:0;left:0;z-index:0;opacity:.3;pointer-events:none}
         <a class="dl-btn" href="https://play.google.com/store/apps/details?id=org.torproject.torbrowser" target="_blank" rel="noopener">Google Play</a>
         <a class="dl-btn secondary" href="https://www.torproject.org/download/#android" target="_blank" rel="noopener">APK direct</a>
       </div>
-      <div class="app-card" id="rn2c-app-soon" style="border-color:#0a3d0a;opacity:.7">
-        <div class="app-name" style="color:#1a7a1a">APP RN2C</div>
-        <div class="app-desc" style="color:#0d5c0d">Application native Android en développement — accès direct au réseau, micro intégré, pas de navigateur requis.</div>
-        <div style="border:1px dashed #0a3d0a;padding:8px;text-align:center;font-size:.65rem;color:#0a3d0a;letter-spacing:.1em">BIENTÔT //</div>
+      <div class="app-card" id="rn2c-app-soon">
+        <div class="app-name">APP RN2C</div>
+        <div class="app-desc">App native — Tor embarqué, micro intégré, accès direct sans navigateur.</div>
+        <a class="dl-btn" href="https://github.com/garybourbier/rn2c-app/releases/download/v0.1.0/app-arm64-v8a-release-unsigned.apk">APK ARM64 (v0.1.0)</a>
+        <a class="dl-btn secondary" href="https://github.com/garybourbier/rn2c-app/releases/latest" target="_blank" rel="noopener">Toutes les architectures</a>
       </div>
     </div>
     <div class="note">⚠️ Brave Android n'a pas de mode Tor — utilise <strong>Tor Browser</strong> pour accéder au .onion.</div>
@@ -163,6 +164,12 @@ canvas{position:fixed;top:0;left:0;z-index:0;opacity:.3;pointer-events:none}
         <div class="app-desc">Fichier → Nouvelle fenêtre privée avec Tor. Micro OK pour le vocal.</div>
         <a class="dl-btn" href="https://brave.com/download/" target="_blank" rel="noopener">brave.com</a>
       </div>
+      <div class="app-card">
+        <div class="app-name">APP RN2C</div>
+        <div class="app-desc">App native Windows — Tor embarqué, interface dédiée. Pas de navigateur requis.</div>
+        <a class="dl-btn" href="https://github.com/garybourbier/rn2c-app/releases/download/v0.1.0/RN2C_0.1.0_x64-setup.exe">Installer v0.1.0 (.exe)</a>
+        <a class="dl-btn secondary" href="https://github.com/garybourbier/rn2c-app/releases/latest" target="_blank" rel="noopener">Toutes les versions</a>
+      </div>
     </div>
     <div class="note">Pour le chat vocal RN2C, préfère <strong>Brave + Tor</strong>.</div>
   </div>
@@ -179,6 +186,12 @@ canvas{position:fixed;top:0;left:0;z-index:0;opacity:.3;pointer-events:none}
         <div class="app-desc">DMG macOS. Fenêtre privée Tor dans le menu Fichier. Micro fonctionnel.</div>
         <a class="dl-btn" href="https://brave.com/download/" target="_blank" rel="noopener">brave.com</a>
       </div>
+      <div class="app-card">
+        <div class="app-name">APP RN2C</div>
+        <div class="app-desc">App native macOS — Tor embarqué. Apple Silicon (M1/M2/M3).</div>
+        <a class="dl-btn" href="https://github.com/garybourbier/rn2c-app/releases/download/v0.1.0/RN2C_0.1.0_aarch64.dmg">DMG v0.1.0 (ARM)</a>
+        <a class="dl-btn secondary" href="https://github.com/garybourbier/rn2c-app/releases/latest" target="_blank" rel="noopener">Toutes les versions</a>
+      </div>
     </div>
     <div class="note">Gatekeeper peut bloquer l'ouverture → clic droit → Ouvrir pour contourner.</div>
   </div>
@@ -194,6 +207,12 @@ canvas{position:fixed;top:0;left:0;z-index:0;opacity:.3;pointer-events:none}
         <div class="app-name">BRAVE</div>
         <div class="app-desc">Dépôt officiel apt/dnf/pacman/zypper disponible.</div>
         <a class="dl-btn" href="https://brave.com/linux/" target="_blank" rel="noopener">brave.com/linux</a>
+      </div>
+      <div class="app-card">
+        <div class="app-name">APP RN2C</div>
+        <div class="app-desc">App native Linux — Tor embarqué, interface dédiée. AppImage (sans install) ou .deb.</div>
+        <a class="dl-btn" href="https://github.com/garybourbier/rn2c-app/releases/download/v0.1.0/RN2C_0.1.0_amd64.AppImage">AppImage v0.1.0</a>
+        <a class="dl-btn secondary" href="https://github.com/garybourbier/rn2c-app/releases/download/v0.1.0/rn2c_0.1.0_amd64.deb">.deb v0.1.0</a>
       </div>
     </div>
     <div class="distro-tabs">
@@ -306,16 +325,9 @@ show(detected);
 // Sur Android : le bouton APP RN2C scroll vers la section, pas d'intent Brave (pas de Tor sur Brave Android)
 if(!isAndroid){
   document.getElementById('btn-tor').href = 'https://www.torproject.org/download/';
-  const btnApp = document.getElementById('btn-rn2c-app');
-  btnApp.removeAttribute('onclick');
-  btnApp.href = 'https://brave.com/download/';
-  btnApp.querySelector('.b-name').textContent = 'BRAVE';
-  btnApp.querySelector('.b-sub').textContent = 'Fenêtre privée Tor intégrée (desktop)';
-  document.getElementById('od-note').textContent = '> Installe l\'app puis reviens scanner le QR .onion ci-dessous.';
+  document.getElementById('od-note').textContent = '> Installe l\'app et connecte-toi directement au réseau RN2C.';
   if(isIos){
     document.getElementById('btn-tor').href = 'https://apps.apple.com/app/onion-browser/id519296448';
-    btnApp.href = 'https://apps.apple.com/app/brave-private-browser/id1052879175';
-    btnApp.querySelector('.b-sub').textContent = 'Fenêtre privée Tor (iOS)';
   }
 }
 </script>
