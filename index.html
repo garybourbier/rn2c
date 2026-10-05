@@ -17,6 +17,14 @@ canvas{position:fixed;top:0;left:0;z-index:0;opacity:.3;pointer-events:none}
 .intro{border:1px solid #0d5c0d;background:#000a00;padding:16px 20px;margin-bottom:28px;font-size:.82rem;color:#33cc33;line-height:1.8}
 .intro strong{color:#33ff33}
 
+/* CE QU'ON TROUVE SUR RN2C */
+.feats{border:1px solid #0d5c0d;background:#000a00;padding:16px 20px;margin-bottom:28px}
+.feats .od-title{font-size:.65rem;color:#1a7a1a;letter-spacing:.15em;margin-bottom:12px}
+.feat{font-size:.75rem;color:#33cc33;line-height:1.6;margin-bottom:8px}
+.feat strong{color:#33ff33;letter-spacing:.08em}
+.dl-btn.pending{border-style:dashed;cursor:default}
+.dl-btn.pending:hover{background:#000;color:#1a7a1a;border-color:#1a7a1a}
+
 /* BOUTONS OUVRIR DIRECT */
 .open-direct{background:#000a00;border:1px solid #33ff33;padding:20px 22px;margin-bottom:28px}
 .open-direct .od-title{font-size:.65rem;color:#1a7a1a;letter-spacing:.15em;margin-bottom:14px}
@@ -81,30 +89,45 @@ canvas{position:fixed;top:0;left:0;z-index:0;opacity:.3;pointer-events:none}
 
   <div class="title">
     <h1>RN2C</h1>
-    <p>RADIO &bull; TOR NETWORK &bull; NO LOGS &bull; NO TRACKING</p>
+    <p>RADIO &bull; VOIX &bull; CHAT &bull; RÉSEAU TOR</p>
   </div>
 
   <div class="intro">
-    <strong>RN2C</strong> est une radio live et un espace de discussion vocal chiffré,
-    hébergé sur le réseau Tor. <strong>Pas de compte</strong>, pas de logs, pas de censure possible.<br>
+    <strong>RN2C</strong> est une radio communautaire en direct et un espace de discussion,
+    accessible uniquement par le réseau Tor. La radio s'écoute <strong>sans compte</strong> ;
+    pour parler, un pseudonyme suffit, <strong>sans email ni numéro de téléphone</strong>.<br>
     Accès via adresse <strong>.onion</strong> — nécessite Tor Browser ou Brave.
+  </div>
+
+  <div class="feats">
+    <div class="od-title">&gt; CE QUE TU TROUVES SUR RN2C _</div>
+    <div class="feat"><strong>// RADIO LIVE</strong> — le flux en direct, depuis le navigateur, sans inscription.</div>
+    <div class="feat"><strong>// VOIX</strong> — parle à l'antenne depuis l'interface, sans rien configurer.</div>
+    <div class="feat"><strong>// CHAT</strong> — la messagerie de la communauté, intégrée à l'interface.</div>
+    <div class="feat"><strong>// RÉSEAU SOCIAL</strong> — publie, abonne-toi, explore les hashtags. Signalement et blocage intégrés.</div>
+    <div class="feat"><strong>// COMPTE</strong> — un pseudonyme et un mot de passe. Si tu l'oublies, ta phrase de récupération t'en rend un neuf.</div>
   </div>
 
   <!-- BOUTONS OUVERTURE DIRECTE (Android prioritaire, desktop aussi) -->
   <div class="open-direct" id="open-direct-block">
     <div class="od-title">&gt; OUVRIR RN2C DIRECTEMENT _</div>
     <div class="od-buttons">
-      <a class="od-btn" id="btn-tor" href="intent://e4a5qysp4kwollmwjnoanmk4qbvuowts4awaqjeeylocjc62i5wa2tyd.onion/#Intent;scheme=https;package=org.torproject.torbrowser;S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dorg.torproject.torbrowser;end">
+      <a class="od-btn" id="btn-tor" href="intent://4xg4ryjrs64xd7kljwj7pryy7ci4zyu2hljpfq4gqj2xp4brjatu2rid.onion/#Intent;scheme=http;package=org.torproject.torbrowser;S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dorg.torproject.torbrowser;end">
         <div class="b-name">TOR BROWSER</div>
         <span class="b-sub">Ouvre RN2C dans Tor Browser</span>
       </a>
-      <a class="od-btn" id="btn-rn2c-app" href="https://github.com/garybourbier/rn2c-app/releases/latest" target="_blank" rel="noopener">
+      <a class="od-btn secondary" id="btn-rn2c-app" href="#app-status">
         <div class="b-name">APP RN2C</div>
-        <span class="b-sub">Télécharger v0.1.2 — Tor embarqué</span>
+        <span class="b-sub">Nouvelle version en préparation</span>
       </a>
     </div>
     <div class="od-note" id="od-note">
-      &gt; Si l'app n'est pas installée, tu seras redirigé vers le store pour la télécharger.
+      &gt; Si Tor Browser n'est pas installé, tu seras redirigé vers le store pour le télécharger.
+    </div>
+    <div class="od-note" id="app-status">
+      &gt; APP RN2C : les versions publiées jusqu'à la v0.2.1 visent d'anciennes adresses, qui ne sont
+      plus celles de RN2C : ne les utilise pas. La nouvelle version arrive ici dès qu'elle est prête.
+      En attendant, passe par Tor Browser.
     </div>
   </div>
 
@@ -129,8 +152,7 @@ canvas{position:fixed;top:0;left:0;z-index:0;opacity:.3;pointer-events:none}
       <div class="app-card" id="rn2c-app-soon">
         <div class="app-name">APP RN2C</div>
         <div class="app-desc">App native — Tor embarqué, micro intégré, accès direct sans navigateur.</div>
-        <a class="dl-btn" href="https://github.com/garybourbier/rn2c-app/releases/download/v0.1.2/app-universal-release-unsigned.apk">APK universel (v0.1.2)</a>
-        <a class="dl-btn secondary" href="https://github.com/garybourbier/rn2c-app/releases/latest" target="_blank" rel="noopener">Toutes les architectures</a>
+        <a class="dl-btn secondary pending" href="#app-status">Nouvelle version en préparation</a>
       </div>
     </div>
     <div class="note">⚠️ Brave Android n'a pas de mode Tor — utilise <strong>Tor Browser</strong> pour accéder au .onion.</div>
@@ -167,8 +189,7 @@ canvas{position:fixed;top:0;left:0;z-index:0;opacity:.3;pointer-events:none}
       <div class="app-card">
         <div class="app-name">APP RN2C</div>
         <div class="app-desc">App native Windows — Tor embarqué, interface dédiée. Pas de navigateur requis.</div>
-        <a class="dl-btn" href="https://github.com/garybourbier/rn2c-app/releases/download/v0.1.2/RN2C_0.1.2_x64-setup.exe">Installer v0.1.2 (.exe)</a>
-        <a class="dl-btn secondary" href="https://github.com/garybourbier/rn2c-app/releases/latest" target="_blank" rel="noopener">Toutes les versions</a>
+        <a class="dl-btn secondary pending" href="#app-status">Nouvelle version en préparation</a>
       </div>
     </div>
     <div class="note">Pour le chat vocal RN2C, préfère <strong>Brave + Tor</strong>.</div>
@@ -188,9 +209,8 @@ canvas{position:fixed;top:0;left:0;z-index:0;opacity:.3;pointer-events:none}
       </div>
       <div class="app-card">
         <div class="app-name">APP RN2C</div>
-        <div class="app-desc">App native macOS — Tor embarqué. Apple Silicon (M1/M2/M3).</div>
-        <a class="dl-btn" href="https://github.com/garybourbier/rn2c-app/releases/download/v0.1.2/RN2C_0.1.2_aarch64.dmg">DMG v0.1.2 (ARM)</a>
-        <a class="dl-btn secondary" href="https://github.com/garybourbier/rn2c-app/releases/latest" target="_blank" rel="noopener">Toutes les versions</a>
+        <div class="app-desc">App native macOS — Tor embarqué, interface dédiée.</div>
+        <a class="dl-btn secondary pending" href="#app-status">Nouvelle version en préparation</a>
       </div>
     </div>
     <div class="note">Gatekeeper peut bloquer l'ouverture → clic droit → Ouvrir pour contourner.</div>
@@ -210,9 +230,8 @@ canvas{position:fixed;top:0;left:0;z-index:0;opacity:.3;pointer-events:none}
       </div>
       <div class="app-card">
         <div class="app-name">APP RN2C</div>
-        <div class="app-desc">App native Linux — Tor embarqué, interface dédiée. AppImage (sans install) ou .deb.</div>
-        <a class="dl-btn" href="https://github.com/garybourbier/rn2c-app/releases/download/v0.1.2/RN2C_0.1.2_amd64.AppImage">AppImage v0.1.2</a>
-        <a class="dl-btn secondary" href="https://github.com/garybourbier/rn2c-app/releases/download/v0.1.2/RN2C_0.1.2_amd64.deb">.deb v0.1.2</a>
+        <div class="app-desc">App native Linux — Tor embarqué, interface dédiée.</div>
+        <a class="dl-btn secondary pending" href="#app-status">Nouvelle version en préparation</a>
       </div>
     </div>
     <div class="distro-tabs">
@@ -277,12 +296,12 @@ flatpak install flathub com.brave.Browser</pre>
 
   <hr class="divider">
   <div class="qr-block">
-    <img src="data:image/png;base64,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" alt="QR RN2C .onion">
+    <img src="qr/rn2c-onion.svg" alt="QR code de l'adresse .onion de RN2C">
     <div class="qr-label">&gt; ADRESSE .ONION DIRECTE _</div>
-    <div class="onion-addr">e4a5qysp4kwollmwjnoanmk4qbvuowts4awaqjeeylocjc62i5wa2tyd.onion</div>
+    <div class="onion-addr">4xg4ryjrs64xd7kljwj7pryy7ci4zyu2hljpfq4gqj2xp4brjatu2rid.onion</div>
   </div>
 
-  <div class="footer">&gt; RN2C // réseau anonyme // zéro log // zéro tracking _</div>
+  <div class="footer">&gt; RN2C // radio communautaire // réseau Tor _</div>
 </div>
 
 <script>
@@ -325,7 +344,7 @@ show(detected);
 // Sur Android : le bouton APP RN2C scroll vers la section, pas d'intent Brave (pas de Tor sur Brave Android)
 if(!isAndroid){
   document.getElementById('btn-tor').href = 'https://www.torproject.org/download/';
-  document.getElementById('od-note').textContent = '> Installe l\'app et connecte-toi directement au réseau RN2C.';
+  document.getElementById('od-note').textContent = '> Installe Tor Browser, puis ouvre l\'adresse .onion ci-dessous.';
   if(isIos){
     document.getElementById('btn-tor').href = 'https://apps.apple.com/app/onion-browser/id519296448';
   }
