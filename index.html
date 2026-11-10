@@ -22,8 +22,6 @@ canvas{position:fixed;top:0;left:0;z-index:0;opacity:.3;pointer-events:none}
 .feats .od-title{font-size:.65rem;color:#1a7a1a;letter-spacing:.15em;margin-bottom:12px}
 .feat{font-size:.75rem;color:#33cc33;line-height:1.6;margin-bottom:8px}
 .feat strong{color:#33ff33;letter-spacing:.08em}
-.dl-btn.pending{border-style:dashed;cursor:default}
-.dl-btn.pending:hover{background:#000;color:#1a7a1a;border-color:#1a7a1a}
 
 /* BOUTONS OUVRIR DIRECT */
 .open-direct{background:#000a00;border:1px solid #33ff33;padding:20px 22px;margin-bottom:28px}
@@ -53,6 +51,7 @@ canvas{position:fixed;top:0;left:0;z-index:0;opacity:.3;pointer-events:none}
 .app-card{border:1px solid #1a7a1a;padding:14px;background:#000}
 .app-card .app-name{font-size:.85rem;color:#33ff33;margin-bottom:4px;letter-spacing:.08em}
 .app-card .app-desc{font-size:.68rem;color:#1a7a1a;margin-bottom:10px;line-height:1.5}
+.app-card .app-desc a{color:#33cc33}
 .dl-btn{display:block;padding:9px 12px;border:1px solid #33ff33;color:#33ff33;text-decoration:none;
          font-size:.7rem;letter-spacing:.08em;text-align:center;background:#000;
          transition:all .2s;margin-bottom:6px}
@@ -94,18 +93,21 @@ canvas{position:fixed;top:0;left:0;z-index:0;opacity:.3;pointer-events:none}
 
   <div class="intro">
     <strong>RN2C</strong> est une radio communautaire en direct et un espace de discussion,
-    accessible uniquement par le réseau Tor. La radio s'écoute <strong>sans compte</strong> ;
-    pour parler, un pseudonyme suffit, <strong>sans email ni numéro de téléphone</strong>.<br>
-    Accès via adresse <strong>.onion</strong> — nécessite Tor Browser ou Brave.
+    accessible uniquement par le réseau Tor. La radio s'écoute <strong>sans compte</strong> ; au salon
+    vocal, un pseudonyme suffit. Pour le chat et le réseau social, tu crées un compte,
+    <strong>sans email ni numéro de téléphone</strong>.<br>
+    Accès par adresse <strong>.onion</strong> : avec l'app RN2C, Tor Browser, Onion Browser sur iPhone,
+    ou Brave sur ordinateur.
   </div>
 
   <div class="feats">
     <div class="od-title">&gt; CE QUE TU TROUVES SUR RN2C _</div>
     <div class="feat"><strong>// RADIO LIVE</strong> — le flux en direct, depuis le navigateur, sans inscription.</div>
-    <div class="feat"><strong>// VOIX</strong> — parle à l'antenne depuis l'interface, sans rien configurer.</div>
+    <div class="feat"><strong>// VOIX</strong> — parle en direct au salon vocal ; ce qu'on dit au salon d'antenne passe à la radio. Tor Browser bloque le micro : prends Brave en fenêtre Tor. Casque obligatoire.</div>
     <div class="feat"><strong>// CHAT</strong> — la messagerie de la communauté, intégrée à l'interface.</div>
     <div class="feat"><strong>// RÉSEAU SOCIAL</strong> — publie, abonne-toi, explore les hashtags. Signalement et blocage intégrés.</div>
-    <div class="feat"><strong>// COMPTE</strong> — un pseudonyme et un mot de passe. Si tu l'oublies, ta phrase de récupération t'en rend un neuf.</div>
+    <div class="feat"><strong>// COMPTE</strong> — un pseudo et un mot que tu mémorises, sans email ni téléphone. Tu reçois un mot de passe, une phrase secrète de six mots et dix codes de secours : note-les, ils ne s'affichent qu'une fois. Mot de passe oublié ? Ta phrase t'en rend un neuf. Phrase perdue ? Un code et ton mot mémorisé. Tout perdu ? Un humain examine ta demande.</div>
+    <div class="feat"><strong>// COFFRE</strong> — une zone privée liée à ton compte. Elle est chiffrée, mais le serveur peut la lire pendant qu'il te la sert.</div>
   </div>
 
   <!-- BOUTONS OUVERTURE DIRECTE (Android prioritaire, desktop aussi) -->
@@ -113,27 +115,27 @@ canvas{position:fixed;top:0;left:0;z-index:0;opacity:.3;pointer-events:none}
     <div class="od-title">&gt; OUVRIR RN2C DIRECTEMENT _</div>
     <div class="od-buttons">
       <a class="od-btn" id="btn-tor" href="intent://4xg4ryjrs64xd7kljwj7pryy7ci4zyu2hljpfq4gqj2xp4brjatu2rid.onion/#Intent;scheme=http;package=org.torproject.torbrowser;S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dorg.torproject.torbrowser;end">
-        <div class="b-name">TOR BROWSER</div>
-        <span class="b-sub">Ouvre RN2C dans Tor Browser</span>
+        <div class="b-name" id="btn-tor-name">TOR BROWSER</div>
+        <span class="b-sub" id="btn-tor-sub">Ouvre RN2C dans Tor Browser</span>
       </a>
-      <a class="od-btn secondary" id="btn-rn2c-app" href="#app-status">
+      <a class="od-btn secondary" id="btn-rn2c-app" href="#choix">
         <div class="b-name">APP RN2C</div>
-        <span class="b-sub">Nouvelle version en préparation</span>
+        <span class="b-sub">v0.8.1 — Tor intégré</span>
       </a>
     </div>
     <div class="od-note" id="od-note">
       &gt; Si Tor Browser n'est pas installé, tu seras redirigé vers le store pour le télécharger.
     </div>
     <div class="od-note" id="app-status">
-      &gt; APP RN2C : les versions publiées jusqu'à la v0.2.1 visent d'anciennes adresses, qui ne sont
-      plus celles de RN2C : ne les utilise pas. La nouvelle version arrive ici dès qu'elle est prête.
-      En attendant, passe par Tor Browser.
+      &gt; APP RN2C v0.8.1 : Tor intégré, rien d'autre à installer (sauf parfois WebView2 sous Windows).
+      Choisis ton système dans les onglets ci-dessous. Une ancienne version de l'app ne joint plus RN2C :
+      remplace-la. Sur Android, désinstalle-la d'abord : la nouvelle est signée par une autre clé.
     </div>
   </div>
 
   <div class="detected-label" id="detect-label"></div>
 
-  <div class="tabs">
+  <div class="tabs" id="choix">
     <div class="tab" id="tab-android" onclick="show('android')">ANDROID</div>
     <div class="tab" id="tab-ios"     onclick="show('ios')">iOS</div>
     <div class="tab" id="tab-windows" onclick="show('windows')">WINDOWS</div>
@@ -143,39 +145,46 @@ canvas{position:fixed;top:0;left:0;z-index:0;opacity:.3;pointer-events:none}
 
   <div class="panel" id="panel-android">
     <div class="dl-grid">
+      <div class="app-card" id="rn2c-app-android">
+        <div class="app-name">APP RN2C</div>
+        <div class="app-desc">App native v0.8.1 — Tor embarqué, accès direct sans navigateur. APK à installer
+          hors du store (autorise les sources inconnues). Une ancienne version se désinstalle d'abord : la nouvelle
+          est signée par une autre clé. Elle ne te prévient pas des nouvelles versions : reviens sur cette page.</div>
+        <a class="dl-btn" href="https://github.com/garybourbier/rn2c-app/releases/download/v0.8.1/rn2c-v0.8.1-signed.apk" target="_blank" rel="noopener">APK v0.8.1</a>
+      </div>
       <div class="app-card">
         <div class="app-name">TOR BROWSER</div>
-        <div class="app-desc">Navigateur officiel Tor Project. Accès .onion natif, anonymat total. Seule option pour Android.</div>
+        <div class="app-desc">Navigateur officiel du Tor Project : il ouvre les adresses .onion. Il bloque le micro.</div>
         <a class="dl-btn" href="https://play.google.com/store/apps/details?id=org.torproject.torbrowser" target="_blank" rel="noopener">Google Play</a>
         <a class="dl-btn secondary" href="https://www.torproject.org/download/#android" target="_blank" rel="noopener">APK direct</a>
       </div>
-      <div class="app-card" id="rn2c-app-soon">
-        <div class="app-name">APP RN2C</div>
-        <div class="app-desc">App native — Tor embarqué, micro intégré, accès direct sans navigateur.</div>
-        <a class="dl-btn secondary pending" href="#app-status">Nouvelle version en préparation</a>
-      </div>
     </div>
-    <div class="note">⚠️ Brave Android n'a pas de mode Tor — utilise <strong>Tor Browser</strong> pour accéder au .onion.</div>
+    <div class="note">⚠️ Brave sur Android n'a pas de mode Tor : prends l'<strong>app RN2C</strong> ou <strong>Tor Browser</strong>.</div>
   </div>
 
   <div class="panel" id="panel-ios">
     <div class="dl-grid">
       <div class="app-card">
         <div class="app-name">ONION BROWSER</div>
-        <div class="app-desc">App Tor officielle pour iPhone/iPad. Accès .onion, open source.</div>
+        <div class="app-desc">Recommandée par le Tor Project pour iPhone et iPad. Open source.</div>
         <a class="dl-btn" href="https://apps.apple.com/app/onion-browser/id519296448" target="_blank" rel="noopener">App Store</a>
       </div>
-      <div class="app-card">
-        <div class="app-name">BRAVE</div>
-        <div class="app-desc">Fenêtre privée Tor intégrée. Plus fluide qu'Onion Browser.</div>
-        <a class="dl-btn" href="https://apps.apple.com/app/brave-private-browser/id1052879175" target="_blank" rel="noopener">App Store</a>
-      </div>
     </div>
-    <div class="note">Sur iOS, Apple impose des restrictions WebRTC — le micro peut ne pas fonctionner pour le vocal.</div>
+    <div class="note">Pas d'app RN2C pour iPhone ni iPad : passe par <strong>Onion Browser</strong>. Le micro peut ne pas y fonctionner pour la voix.</div>
   </div>
 
   <div class="panel" id="panel-windows">
     <div class="dl-grid">
+      <div class="app-card">
+        <div class="app-name">APP RN2C</div>
+        <div class="app-desc">App native Windows v0.8.1 — Tor embarqué, interface dédiée. Non signée : si Windows affiche
+          « Windows a protégé votre ordinateur », clique « Informations complémentaires » puis « Exécuter quand même ».
+          Il lui faut WebView2, déjà présent sur Windows 10 et 11 à jour ; s'il manque, l'installeur le télécharge
+          chez Microsoft, hors Tor, et la version .zip ne s'ouvre pas.</div>
+        <a class="dl-btn" href="https://github.com/garybourbier/rn2c-app/releases/download/v0.8.1/RN2C_0.8.1_x64-setup.exe" target="_blank" rel="noopener">Installeur .exe</a>
+        <a class="dl-btn secondary" href="https://github.com/garybourbier/rn2c-app/releases/download/v0.8.1/rn2c-v0.8.1-portable-win64.zip" target="_blank" rel="noopener">Portable .zip</a>
+        <a class="dl-btn secondary" href="https://github.com/garybourbier/rn2c-app/releases/download/v0.8.1/RN2C_0.8.1_x64_en-US.msi" target="_blank" rel="noopener">.msi</a>
+      </div>
       <div class="app-card">
         <div class="app-name">TOR BROWSER</div>
         <div class="app-desc">Version officielle Windows 64-bit. Installation en 2 clics, pas d'admin requis.</div>
@@ -183,20 +192,24 @@ canvas{position:fixed;top:0;left:0;z-index:0;opacity:.3;pointer-events:none}
       </div>
       <div class="app-card">
         <div class="app-name">BRAVE</div>
-        <div class="app-desc">Fichier → Nouvelle fenêtre privée avec Tor. Micro OK pour le vocal.</div>
+        <div class="app-desc">Fichier → Nouvelle fenêtre privée avec Tor. Pour le micro, règle d'abord la politique WebRTC
+          sur « Disable non-proxied UDP » (Paramètres → Confidentialité) : sans ce réglage, une autre page ouverte
+          dans Brave peut révéler ton adresse IP.</div>
         <a class="dl-btn" href="https://brave.com/download/" target="_blank" rel="noopener">brave.com</a>
       </div>
-      <div class="app-card">
-        <div class="app-name">APP RN2C</div>
-        <div class="app-desc">App native Windows — Tor embarqué, interface dédiée. Pas de navigateur requis.</div>
-        <a class="dl-btn secondary pending" href="#app-status">Nouvelle version en préparation</a>
-      </div>
     </div>
-    <div class="note">Pour le chat vocal RN2C, préfère <strong>Brave + Tor</strong>.</div>
+    <div class="note">Pour parler au micro : <strong>Brave en fenêtre Tor</strong>, réglé comme ci-dessus. Tor Browser bloque le micro.</div>
   </div>
 
   <div class="panel" id="panel-mac">
     <div class="dl-grid">
+      <div class="app-card">
+        <div class="app-name">APP RN2C</div>
+        <div class="app-desc">App native macOS v0.8.1, Apple Silicon et Intel — Tor embarqué, interface dédiée.
+          Non notarisée par Apple : à la première ouverture, Réglages Système → Confidentialité et sécurité →
+          « Ouvrir quand même ».</div>
+        <a class="dl-btn" href="https://github.com/garybourbier/rn2c-app/releases/download/v0.8.1/RN2C_0.8.1_universal.dmg" target="_blank" rel="noopener">DMG universel</a>
+      </div>
       <div class="app-card">
         <div class="app-name">TOR BROWSER</div>
         <div class="app-desc">DMG universel Apple Silicon + Intel. Drag & Drop dans Applications.</div>
@@ -204,20 +217,27 @@ canvas{position:fixed;top:0;left:0;z-index:0;opacity:.3;pointer-events:none}
       </div>
       <div class="app-card">
         <div class="app-name">BRAVE</div>
-        <div class="app-desc">DMG macOS. Fenêtre privée Tor dans le menu Fichier. Micro fonctionnel.</div>
+        <div class="app-desc">Fenêtre privée Tor dans le menu Fichier. Pour le micro, règle d'abord la politique WebRTC
+          sur « Disable non-proxied UDP » (Paramètres → Confidentialité) : sans ce réglage, une autre page ouverte
+          dans Brave peut révéler ton adresse IP.</div>
         <a class="dl-btn" href="https://brave.com/download/" target="_blank" rel="noopener">brave.com</a>
       </div>
-      <div class="app-card">
-        <div class="app-name">APP RN2C</div>
-        <div class="app-desc">App native macOS — Tor embarqué, interface dédiée.</div>
-        <a class="dl-btn secondary pending" href="#app-status">Nouvelle version en préparation</a>
-      </div>
     </div>
-    <div class="note">Gatekeeper peut bloquer l'ouverture → clic droit → Ouvrir pour contourner.</div>
+    <div class="note">Si macOS bloque l'ouverture d'une app : Réglages Système → Confidentialité et sécurité → « Ouvrir quand même ».</div>
   </div>
 
   <div class="panel" id="panel-linux">
     <div class="dl-grid">
+      <div class="app-card">
+        <div class="app-name">APP RN2C</div>
+        <div class="app-desc">App native Linux v0.8.1 — Tor embarqué, interface dédiée. x86_64 ci-dessous ;
+          ARM64 : <a href="https://github.com/garybourbier/rn2c-app/releases/download/v0.8.1/RN2C_0.8.1_aarch64.AppImage" target="_blank" rel="noopener">AppImage</a>,
+          <a href="https://github.com/garybourbier/rn2c-app/releases/download/v0.8.1/RN2C_0.8.1_arm64.deb" target="_blank" rel="noopener">.deb</a>,
+          <a href="https://github.com/garybourbier/rn2c-app/releases/download/v0.8.1/RN2C-0.8.1-1.aarch64.rpm" target="_blank" rel="noopener">.rpm</a>.</div>
+        <a class="dl-btn" href="https://github.com/garybourbier/rn2c-app/releases/download/v0.8.1/RN2C_0.8.1_amd64.AppImage" target="_blank" rel="noopener">AppImage</a>
+        <a class="dl-btn secondary" href="https://github.com/garybourbier/rn2c-app/releases/download/v0.8.1/RN2C_0.8.1_amd64.deb" target="_blank" rel="noopener">.deb</a>
+        <a class="dl-btn secondary" href="https://github.com/garybourbier/rn2c-app/releases/download/v0.8.1/RN2C-0.8.1-1.x86_64.rpm" target="_blank" rel="noopener">.rpm</a>
+      </div>
       <div class="app-card">
         <div class="app-name">TOR BROWSER</div>
         <div class="app-desc">Archive tar.xz universelle — fonctionne sur toutes les distros.</div>
@@ -225,13 +245,8 @@ canvas{position:fixed;top:0;left:0;z-index:0;opacity:.3;pointer-events:none}
       </div>
       <div class="app-card">
         <div class="app-name">BRAVE</div>
-        <div class="app-desc">Dépôt officiel apt/dnf/pacman/zypper disponible.</div>
+        <div class="app-desc">Dépôt officiel apt/dnf/pacman/zypper disponible : suis les instructions de sa page Linux.</div>
         <a class="dl-btn" href="https://brave.com/linux/" target="_blank" rel="noopener">brave.com/linux</a>
-      </div>
-      <div class="app-card">
-        <div class="app-name">APP RN2C</div>
-        <div class="app-desc">App native Linux — Tor embarqué, interface dédiée.</div>
-        <a class="dl-btn secondary pending" href="#app-status">Nouvelle version en préparation</a>
       </div>
     </div>
     <div class="distro-tabs">
@@ -244,54 +259,49 @@ canvas{position:fixed;top:0;left:0;z-index:0;opacity:.3;pointer-events:none}
     </div>
     <div class="dpanel active" id="dpanel-ubuntu">
       <div class="code-block">
-        <div class="code-label"># Tor Browser</div>
+        <div class="code-label"># App RN2C (x86_64), dans le dossier du fichier téléchargé</div>
+        <pre>sudo apt install ./RN2C_0.8.1_amd64.deb</pre>
+        <div class="code-label" style="margin-top:10px"># Tor Browser (Debian : active d'abord la section contrib)</div>
         <pre>sudo apt install -y torbrowser-launcher && torbrowser-launcher</pre>
-        <div class="code-label" style="margin-top:10px"># Brave</div>
-        <pre>sudo curl -fsSLo /usr/share/keyrings/brave.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
-echo "deb [arch=amd64 signed-by=/usr/share/keyrings/brave.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave.list
-sudo apt update && sudo apt install -y brave-browser</pre>
       </div>
     </div>
     <div class="dpanel" id="dpanel-fedora">
       <div class="code-block">
-        <div class="code-label"># Tor Browser</div>
+        <div class="code-label"># App RN2C (x86_64), dans le dossier du fichier téléchargé</div>
+        <pre>sudo dnf install ./RN2C-0.8.1-1.x86_64.rpm</pre>
+        <div class="code-label" style="margin-top:10px"># Tor Browser</div>
         <pre>sudo dnf install -y torbrowser-launcher && torbrowser-launcher</pre>
-        <div class="code-label" style="margin-top:10px"># Brave</div>
-        <pre>sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
-sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
-sudo dnf install -y brave-browser</pre>
       </div>
     </div>
     <div class="dpanel" id="dpanel-arch">
       <div class="code-block">
-        <div class="code-label"># Tor Browser + Brave via AUR</div>
-        <pre>yay -S tor-browser brave-bin</pre>
+        <div class="code-label"># App RN2C : l'AppImage (onglet Générique)</div>
+        <div class="code-label" style="margin-top:10px"># Tor Browser + Brave via AUR</div>
+        <pre>yay -S tor-browser-bin brave-bin</pre>
       </div>
     </div>
     <div class="dpanel" id="dpanel-suse">
       <div class="code-block">
-        <div class="code-label"># Tor Browser</div>
+        <div class="code-label"># App RN2C : l'AppImage (onglet Générique)</div>
+        <div class="code-label" style="margin-top:10px"># Tor Browser</div>
         <pre>sudo zypper install torbrowser-launcher && torbrowser-launcher</pre>
-        <div class="code-label" style="margin-top:10px"># Brave</div>
-        <pre>sudo zypper ar https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
-sudo zypper ref && sudo zypper in brave-browser</pre>
       </div>
     </div>
     <div class="dpanel" id="dpanel-flatpak">
       <div class="code-block">
-        <pre>flatpak install flathub com.github.micahflee.torbrowser-launcher
+        <pre>flatpak install flathub org.torproject.torbrowser-launcher
 flatpak install flathub com.brave.Browser</pre>
       </div>
     </div>
     <div class="dpanel" id="dpanel-generic">
       <div class="code-block">
-        <div class="code-label"># Tor Browser — tar.xz</div>
-        <pre>tar -xf tor-browser-linux64-*.tar.xz && cd tor-browser && ./start-tor-browser.desktop</pre>
-        <div class="code-label" style="margin-top:10px"># Brave — AppImage</div>
-        <pre>chmod +x brave-browser-*.AppImage && ./brave-browser-*.AppImage</pre>
+        <div class="code-label"># App RN2C — AppImage (x86_64)</div>
+        <pre>chmod +x RN2C_0.8.1_amd64.AppImage && ./RN2C_0.8.1_amd64.AppImage</pre>
+        <div class="code-label" style="margin-top:10px"># Tor Browser — tar.xz</div>
+        <pre>tar -xf tor-browser-linux-*.tar.xz && cd tor-browser && ./start-tor-browser.desktop</pre>
       </div>
     </div>
-    <div class="note">Pour le chat vocal RN2C, préfère <strong>Brave + Tor</strong>.</div>
+    <div class="note">Pour parler au micro : <strong>Brave en fenêtre Tor</strong>, avec la politique WebRTC réglée sur « Disable non-proxied UDP ». Tor Browser bloque le micro.</div>
   </div>
 
   <hr class="divider">
@@ -328,10 +338,10 @@ function showdistro(id,el){
   el.classList.add('active');
 }
 
-// Détection OS + adaptation des boutons intent
+// Détection OS + adaptation des boutons. Un iPad récent se présente comme un Mac : l'écran tactile le trahit.
 const ua = navigator.userAgent.toLowerCase();
 const isAndroid = /android/.test(ua);
-const isIos = /iphone|ipad/.test(ua);
+const isIos = /iphone|ipad|ipod/.test(ua) || (/macintosh/.test(ua) && navigator.maxTouchPoints > 1);
 let detected = 'windows', label = 'Windows détecté';
 if(isAndroid)      { detected='android'; label='Android détecté'; }
 else if(isIos)     { detected='ios';     label='iOS détecté'; }
@@ -340,14 +350,22 @@ else if(/linux/.test(ua)) { detected='linux';   label='Linux détecté'; }
 document.getElementById('detect-label').textContent = '> ' + label + ' _';
 show(detected);
 
-// Sur iOS/desktop : intent:// ne marche pas, on remplace par liens de téléchargement
-// Sur Android : le bouton APP RN2C scroll vers la section, pas d'intent Brave (pas de Tor sur Brave Android)
-if(!isAndroid){
+// Android : intent:// ouvre Tor Browser, et le bouton de l'app télécharge l'APK.
+// Ordinateur : intent:// ne marche pas, on renvoie vers les téléchargements.
+// iPhone et iPad : pas de Tor Browser ni d'app RN2C, seulement Onion Browser.
+const btnApp = document.getElementById('btn-rn2c-app');
+if(isAndroid){
+  btnApp.href = 'https://github.com/garybourbier/rn2c-app/releases/download/v0.8.1/rn2c-v0.8.1-signed.apk';
+} else if(isIos){
+  document.getElementById('btn-tor').href = 'https://apps.apple.com/app/onion-browser/id519296448';
+  document.getElementById('btn-tor-name').textContent = 'ONION BROWSER';
+  document.getElementById('btn-tor-sub').textContent = 'Ouvre RN2C dans Onion Browser';
+  document.getElementById('od-note').textContent = '> Installe Onion Browser, puis ouvre l\'adresse .onion ci-dessous.';
+  btnApp.style.display = 'none';
+  document.getElementById('app-status').style.display = 'none';
+} else {
   document.getElementById('btn-tor').href = 'https://www.torproject.org/download/';
-  document.getElementById('od-note').textContent = '> Installe Tor Browser, puis ouvre l\'adresse .onion ci-dessous.';
-  if(isIos){
-    document.getElementById('btn-tor').href = 'https://apps.apple.com/app/onion-browser/id519296448';
-  }
+  document.getElementById('od-note').textContent = '> Installe l\'app RN2C (onglets ci-dessous) : elle rejoint RN2C toute seule. Ou installe Tor Browser, puis ouvre l\'adresse .onion ci-dessous.';
 }
 </script>
 </body>
